@@ -4,18 +4,18 @@ var inquirer = require ("inquirer");
 
 function Flashcard (question, answer){
 	"use strict";
-	this.question = question;
-	this.answer = answer;
-	var cardEntry = [question, answer];
+	console.log("Making Flash Cards");
+
+	var cardEntry = question + " / " + answer + "\n";
 	
-	fs.writeFile("flashcards.txt", cardEntry, "utf8", function(error){
+	fs.appendFile("flashcards.txt", cardEntry, "utf8", function (error){
 		if (error){
 			return console.log("Something happened with the append FileSystem.");
 		}
 		else{
-			flashDeck.push(cardEntry);
+			console.log("Data was pushed to storage.");
+			//deck.push(cardEntry);
 		}
 	});
 }
-
 module.exports = Flashcard;

@@ -4,16 +4,15 @@ var inquirer = require ("inquirer");
 
 function Clozecard(answer, deletePortion){
 	"use strict";
-	this.answer = answer;
-	this.partial = answer - deletePortion;
-	var clozeEntry = [this.partial, answer];
+	var partial = answer - deletePortion;
+	var clozeEntry = partial + " / " + answer + "\n";
 	
 	fs.writeFile("clozeCard.txt", clozeEntry, "utf8", function(error){
 		if (error){
 			return console.log("Something errored out in the append clozeCard.txt file.");
 		}
 		else{
-			clozeDeck.push(clozeEntry);
+			console.log("Data was pushed to storage.");
 		}
 	});
 }
